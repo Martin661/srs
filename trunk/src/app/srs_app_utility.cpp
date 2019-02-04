@@ -952,7 +952,7 @@ SrsNetworkDevices::SrsNetworkDevices()
     rfifo = 0;
     rframe = 0;
     rcompressed = 0;
-    rmulticast = 0;
+    
     
     sbytes = 0;
     spackets = 0;
@@ -1003,8 +1003,8 @@ void srs_update_network_devices()
             // @see: read_net_dev() from https://github.com/sysstat/sysstat/blob/master/rd_stats.c#L786
             // @remark, we use our algorithm, not sysstat.
             char fname[7];
-            sscanf(buf, "%6[^:]:%llu %lu %lu %lu %lu %lu %lu %lu %llu %lu %lu %lu %lu %lu %lu %lu\n",
-                fname, &r.rbytes, &r.rpackets, &r.rerrs, &r.rdrop, &r.rfifo, &r.rframe, &r.rcompressed, &r.rmulticast,
+            sscanf(buf, "%6[^:]:%llu %lu %lu %lu %lu %lu %lu %lu %llu %lu %lu %lu %lu %lu %lu\n",
+                fname, &r.rbytes, &r.rpackets, &r.rerrs, &r.rdrop, &r.rfifo, &r.rframe, &r.rcompressed, 
                 &r.sbytes, &r.spackets, &r.serrs, &r.sdrop, &r.sfifo, &r.scolls, &r.scarrier, &r.scompressed);
                 
             sscanf(fname, "%s", r.name);
